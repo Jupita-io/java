@@ -1,0 +1,3 @@
+rootProject.name = "Jupita API SDK"
+include ':app'
+include ':agent'
