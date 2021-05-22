@@ -219,5 +219,3 @@ public void feed(FeedListener feedListener)
 ```
 
 FeedListener is an interface which needs to be implemented to listen to results of the feed call. The onSuccess event returns the feed for the whole week as a JSONObject.
-
-https://github.com/Jupita-io/Jupita-Agent-Android
