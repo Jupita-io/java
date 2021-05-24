@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/Jupita-io/Jupita-Agent-Android.svg)](https://jitpack.io/#Jupita-io/Jupita-Agent-Android)
 
-# Jupita Agent Android Java SDK
+# Jupita Agent Java SDK
 
 This SDK is developed for Android using Java and utilizes Google’s Volley library to create the API calls required.
 Currently the Android SDK fully supports the 3 APIs available for Jupita Agent.
