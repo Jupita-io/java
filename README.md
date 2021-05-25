@@ -53,7 +53,7 @@ agent.dump("hi", "3",  Agent.AGENT, new Agent.DumpListener() {
 
             public void onSuccess(String msg, double utterance) {
 
-                        / Do something
+                        // Do something
 
                         Log.d("TEST", String.valueOf(utterance));
 
