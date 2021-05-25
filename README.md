@@ -10,8 +10,8 @@ All API calls are made asynchronously, thus there are event listeners available 
 There are 3 APIs within the Juptia Agent product – `dump` `rating` & `feed`:
 
 - Dump allows you to send the utterances you wish to send.
-- rating allows you to retrieve the rating for the agent in question.
-- feed provides you with some basic rating analytics.
+- Rating allows you to retrieve the rating for the agent in question.
+- Feed provides you with some basic rating analytics.
 
 ## Quickstart
 ### Step 1
