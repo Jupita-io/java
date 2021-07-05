@@ -7,9 +7,9 @@ Currently the Android SDK fully supports the 3 APIs available for Jupita Agent.
 All API calls are made asynchronously, thus there are event listeners available to handle the API results.
 
 ## Overview
-Jupita Agent is an API product that provides deep learning powered analysis of conversational data, via many mediums, between an agent (any service provider or staff member/company representative) and a client/customer. Within the SDK documentation, `message type` will simply refer to who is speaking/typing. Message type '0' = `agent`, and message type '1' = `client`, although these labels are normally handled by the SDK.
+Jupita Agent is an API product that provides deep learning powered analysis of conversational data, via many mediums, between an agent (any service provider or staff member/company representative) and a client/customer. Within the SDK documentation, `message_type` will simply refer to who is speaking/typing. `Message_type` '0' = `agent`, and `message_type` '1' = `client`, although these labels are normally handled by the SDK.
 
-The required parameters for the APIs include setting `message type`, along with assigning a `agent` + `client` ID to be passed - how this is structured or deployed is dependent on your systems/platforms architecture, therefore it is completely flexible and customisable. Please note when assigning the `agent` ID that no data will be available for that particular agent from any of the APIs until the agent has sent at least 1 utterance via the `dump` API. 
+The required parameters for the APIs include setting `message_type`, along with assigning an `agent_id` + `client_id` to be passed - how this is structured or deployed is dependent on your systems/platforms architecture, therefore it is completely flexible and customisable. Please note when assigning the `agent_id` that no data will be available for that particular agent from any of the APIs until the agent has sent at least 1 utterance via the `dump` API. 
 
 ## APIs
 There are 3 APIs within the Juptia Agent product – `dump` `rating` & `feed`:
@@ -167,7 +167,7 @@ agent.feed(new Agent.FeedListener() {
 ## Error handling
 The SDK throws 2 errors:
 - JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Agent methods.
-- IllegalArgumentException: this arises if the message type set in the dump method is not 1 or 0, or the model name in rating method is not ‘JupitaV1’.
+- IllegalArgumentException: this arises if the `message_type` set in the dump method is not 1 or 0, or the model name in rating method is not ‘JupitaV1’.
 
 ## Error codes
 Error codes thrown are 401 when the token is incorrect and 400 when there is an attempt to dump gibberish content to the server, although the model does have an inbuilt gibberish detector.
@@ -202,9 +202,9 @@ public void dump(@NonNull String text, @NonNull String clientId, DumpListener du
 public void dump(@NonNull String text, @NonNull String clientId)
 ```
 
-If the values of type and isCall are not provided by default the values are considered 0 and false. Thus text and the clientId are essential when creating a dump request. To avoid illegal argument error use Agent.AGENT or Agent.CLIENT for type.
+If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `clientId` are essential when creating a `dump` request. To avoid illegal argument error use `Agent.AGENT` or `Agent.CLIENT` for type.
 
-DumpListener is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
+`DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
 
 ### `rating` method definitions
 
@@ -213,7 +213,7 @@ public void rating(RatingListener ratingListener)
 public void rating(@NonNull String modelName, RatingListener ratingListener)
 ```
 
-The second rating definition is created for future use when there will be multiple models to choose from. At the moment only 1 model (JupitaV1) is supported. To avoid illegal argument error use Agent.JupitaV1 for modelName.
+The second rating definition is created for future use when there will be multiple models to choose from. At the moment only 1 model (JupitaV1) is supported. To avoid illegal argument error use `Agent.JupitaV1` for modelName.
 
 RatingListener is an interface which needs to be implemented to listen to results of the rating call. The onSuccess event returns the rating as a double.
 

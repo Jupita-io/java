@@ -44,9 +44,9 @@ public class Agent {
 		}
 		final JSONObject jsonData = new JSONObject("{" +
 				"\"token\":\"" + this.token + "\"," +
-				"\"client id\":\""+ clientId + "\"," +
-				"\"agent id\":\"" + this.agentId + "\"," +
-				"\"message type\":" + String.valueOf(type) + "," +
+				"\"client_id\":\""+ clientId + "\"," +
+				"\"agent_id\":\"" + this.agentId + "\"," +
+				"\"message_type\":" + String.valueOf(type) + "," +
 				"\"text\":\""+ text +"\"," +
 				"\"isCall\":"+ String.valueOf(isCall) +"}");
 
@@ -100,7 +100,7 @@ public class Agent {
 
 		final JSONObject jsonData = new JSONObject("{" +
 				"\"token\":\"" + this.token + "\"," +
-				"\"agent id\":\"" + this.agentId + "\"," +
+				"\"agent_id\":\"" + this.agentId + "\"," +
 				"\"model\":\"" + modelName + "\"}");
 
 		JsonObjectRequest request = new JsonObjectRequest(Constants.ratingEndpoint, jsonData,
@@ -148,7 +148,7 @@ public class Agent {
 
 		final JSONObject jsonData = new JSONObject("{" +
 				"\"token\":\"" + this.token + "\"," +
-				"\"agent id\":\"" + this.agentId + "\"}");
+				"\"agent_id\":\"" + this.agentId + "\"}");
 
 		JsonObjectRequest request = new JsonObjectRequest(Constants.feedEndpoint, jsonData,
 				new Response.Listener<JSONObject>() {
