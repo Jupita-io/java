@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		String token = "fb26f2624c75b78c46ef98601661d834abc0f866571902d18fb1bce50883d644";
+		String token = "fa5c33c081dd73698a0f78d72054addf01282993341ead434b2b9147fd6943e9";
 		Agent agent = new Agent.Builder(this)
 								.setToken(token)
-								.setAgentId("1")
+								.setAgent_id("2")
 								.build();
 		try {
 			Log.d("JUPITA", "Starting different API calls");

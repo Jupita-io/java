@@ -50,7 +50,7 @@ Agent agent = new Agent.Builder(getApplicationContext())
 ```
 
 ### Step 4
-Call the dump API as a message from Agent by specifying the message and clientId – represented as '3' below;
+Call the dump API as a message from Agent by specifying the message and client_id – represented as '3' below;
 
 ```
 agent.dump("hi", "3",  Agent.AGENT, new Agent.DumpListener() {
@@ -189,20 +189,20 @@ Agent agent = new Agent.Builder(getApplicationContext())
                                     .build();
 ```
 
-The builder constructs with the context of the application. This is needed for building the volley request queue. Next the token and agentId needs to be set.
+The builder constructs with the context of the application. This is needed for building the volley request queue. Next the token and agent_id needs to be set.
 
 The built agent can now be used to call dump, rating and feed methods asynchronously.
 
 ### `dump` method definitions
 
 ```
-public void dump(@NonNull String text, @NonNull String clientId, int type, boolean isCall, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String clientId, int type, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String clientId, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String clientId)
+public void dump(@NonNull String text, @NonNull String client_id, int type, boolean isCall, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String client_id, int type, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String client_id, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String client_id)
 ```
 
-If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `clientId` are essential when creating a `dump` request. To avoid illegal argument error use `Agent.AGENT` or `Agent.CLIENT` for type.
+If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `client_id` are essential when creating a `dump` request. To avoid illegal argument error use `Agent.AGENT` or `Agent.CLIENT` for type.
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
 

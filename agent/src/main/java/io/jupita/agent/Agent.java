@@ -19,7 +19,7 @@ import java.io.UnsupportedEncodingException;
 
 public class Agent {
 	private String token;
-	private String agentId;
+	private String agent_id;
 	private static RequestQueue requestQueue;
 	private Context context;
 
@@ -29,14 +29,14 @@ public class Agent {
 	public static final String JUPITAV2 = "JupitaV2";
 
 
-	public Agent(@NonNull Context context, @NonNull String token, @NonNull String agentId){
+	public Agent(@NonNull Context context, @NonNull String token, @NonNull String agent_id){
 		this.token = token;
-		this.agentId = agentId;
+		this.agent_id = agent_id;
 		this.context = context;
 		requestQueue = Volley.newRequestQueue(context);
 	}
 
-	private void dumpRequestAPI(@NonNull String text, @NonNull String clientId,
+	private void dumpRequestAPI(@NonNull String text, @NonNull String client_id,
 								int type, boolean isCall,
 								DumpListener dumpListener) throws JSONException, IllegalArgumentException {
 		if(type != AGENT && type != CLIENT){
@@ -44,8 +44,8 @@ public class Agent {
 		}
 		final JSONObject jsonData = new JSONObject("{" +
 				"\"token\":\"" + this.token + "\"," +
-				"\"client_id\":\""+ clientId + "\"," +
-				"\"agent_id\":\"" + this.agentId + "\"," +
+				"\"client_id\":\""+ client_id + "\"," +
+				"\"agent_id\":\"" + this.agent_id + "\"," +
 				"\"message_type\":" + String.valueOf(type) + "," +
 				"\"text\":\""+ text +"\"," +
 				"\"isCall\":"+ String.valueOf(isCall) +"}");
@@ -100,7 +100,7 @@ public class Agent {
 
 		final JSONObject jsonData = new JSONObject("{" +
 				"\"token\":\"" + this.token + "\"," +
-				"\"agent_id\":\"" + this.agentId + "\"," +
+				"\"agent_id\":\"" + this.agent_id + "\"," +
 				"\"model\":\"" + modelName + "\"}");
 
 		JsonObjectRequest request = new JsonObjectRequest(Constants.ratingEndpoint, jsonData,
@@ -148,7 +148,7 @@ public class Agent {
 
 		final JSONObject jsonData = new JSONObject("{" +
 				"\"token\":\"" + this.token + "\"," +
-				"\"agent_id\":\"" + this.agentId + "\"}");
+				"\"agent_id\":\"" + this.agent_id + "\"}");
 
 		JsonObjectRequest request = new JsonObjectRequest(Constants.feedEndpoint, jsonData,
 				new Response.Listener<JSONObject>() {
@@ -183,26 +183,26 @@ public class Agent {
 		requestQueue.add(request);
 	}
 
-	public void dump(@NonNull String text, @NonNull String clientId)
+	public void dump(@NonNull String text, @NonNull String client_id)
 			throws JSONException, IllegalArgumentException {
-		dumpRequestAPI(text, clientId, AGENT, false, null);
+		dumpRequestAPI(text, client_id, AGENT, false, null);
 	}
 
-	public void dump(@NonNull String text, @NonNull String clientId, DumpListener dumpListener)
+	public void dump(@NonNull String text, @NonNull String client_id, DumpListener dumpListener)
 			throws JSONException, IllegalArgumentException {
-		dumpRequestAPI(text, clientId, AGENT, false, dumpListener);
+		dumpRequestAPI(text, client_id, AGENT, false, dumpListener);
 	}
 
-	public void dump(@NonNull String text, @NonNull String clientId,
+	public void dump(@NonNull String text, @NonNull String client_id,
 					 int type, DumpListener dumpListener)
 			throws JSONException, IllegalArgumentException {
-		dumpRequestAPI(text, clientId, type, false, dumpListener);
+		dumpRequestAPI(text, client_id, type, false, dumpListener);
 	}
 
-	public void dump(@NonNull String text, @NonNull String clientId, int type,
+	public void dump(@NonNull String text, @NonNull String client_id, int type,
 					 boolean isCall, DumpListener dumpListener)
 			throws JSONException, IllegalArgumentException {
-		dumpRequestAPI(text, clientId, type, isCall, dumpListener);
+		dumpRequestAPI(text, client_id, type, isCall, dumpListener);
 	}
 
 	public void rating(RatingListener ratingListener)
@@ -238,7 +238,7 @@ public class Agent {
 	// Create a builder class to build Agent
 	public static class Builder {
 		private String token;
-		private String agentId;
+		private String agent_id;
 		private Context context;
 
 		public Builder(@NonNull Context context){
@@ -250,13 +250,13 @@ public class Agent {
 			return this;
 		}
 
-		public Builder setAgentId(@NonNull String agentId) {
-			this.agentId = agentId;
+		public Builder setAgent_id(@NonNull String agent_id) {
+			this.agent_id = agent_id;
 			return this;
 		}
 
 		public Agent build(){
-			return new Agent(this.context, this.token, this.agentId);
+			return new Agent(this.context, this.token, this.agent_id);
 		}
 	}
 }
