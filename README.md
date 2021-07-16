@@ -45,7 +45,7 @@ Build Jupita Agent - '2' has been used to represent the agentId;
 String token = “your-token”;
 Agent agent = new Agent.Builder(getApplicationContext())
                                     .setToken(token)
-                                    .setAgentId("2")
+                                    .setAgent_id("2")
                                     .build();
 ```
 
@@ -185,7 +185,7 @@ Jupita Agent can be constructed directly using the public constructor but it is 
 String token = “your-token”;
 Agent agent = new Agent.Builder(getApplicationContext())
                                     .setToken(token)
-                                    .setAgentId("2")
+                                    .setAgent_id("2")
                                     .build();
 ```
 
