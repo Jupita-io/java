@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		String token = "fa5c33c081dd73698a0f78d72054addf01282993341ead434b2b9147fd6943e9";
+		String token = "Your_token";
 		Agent agent = new Agent.Builder(this)
 								.setToken(token)
 								.setAgent_id("2")
