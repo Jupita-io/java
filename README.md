@@ -7,7 +7,7 @@ Currently the Android SDK fully supports the 3 APIs available for Jupita Agent.
 All API calls are made asynchronously, thus there are event listeners available to handle the API results.
 
 ## Overview
-Jupita Agent is an API product that provides deep learning powered analysis of conversational data, via many mediums, between an agent (any service provider or staff member/company representative) and a client/customer. Within the SDK documentation, `message_type` will simply refer to who is speaking/typing. `Message_type` '0' = `agent`, and `message_type` '1' = `client`, although these labels are normally handled by the SDK.
+Jupita Agent is an API product that provides deep learning powered analysis of conversational data, via many mediums, between an agent and client. Within the SDK documentation, `message_type` will simply refer to who is speaking. `Message_type` '0' = `agent`, and `message_type` '1' = `client`, although these labels are handled by the SDK.
 
 The required parameters for the APIs include setting `message_type`, along with assigning an `agent_id` + `client_id` to be passed - how this is structured or deployed is dependent on your systems/platforms architecture, therefore it is completely flexible and customisable. Please note when assigning the `agent_id` that no data will be available for that particular agent from any of the APIs until the agent has sent at least 1 utterance via the `dump` API. 
 
@@ -39,7 +39,7 @@ Implementation 'com.github.Jupita-io:Jupita-Agent-Android:0.1.0'
 ```
 
 ### Step 3
-Build Jupita Agent - '2' has been used to represent the agentId;
+Build Jupita Agent - '2' has been used to represent the agent_id;
 
 ```
 String token = “your-token”;
@@ -174,7 +174,7 @@ Error codes thrown are 401 when the token is incorrect and 400 when there is an 
 
 ## Libraries
 Use Step 1 and 2 so that the Jupita Agent Android SDK is available within the scope of the project.
- Currently the Jupita Agent Android SDK is dependent on volley 1.2.0 and takes the permission of the internet as soon as the SDK is added as a dependency.
+Currently the Jupita Agent Android SDK is dependent on volley 1.2.0 and takes the permission of the internet as soon as the SDK is added as a dependency.
 
 ## Classes
 The available product under the Android SDK is Jupita Agent.
