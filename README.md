@@ -35,7 +35,9 @@ allprojects {
 Add the dependency in app’s build.gradle file;
 
 ```
-implementation 'com.github.Jupita-io:Jupita-Agent-Android:1.1.0'
+dependencies {
+                implementation 'com.github.Jupita-io:Jupita-Agent-Android:1.1.0'
+	    }
 ```
 
 ### Step 3
