@@ -5,14 +5,14 @@
 This SDK is developed for Android using Java and utilizes Google’s Volley library to create the API calls required. This library will allow you to make the required `dump` API calls with Jupita Agent. All API calls are made asynchronously, thus there are event listeners available to handle the API results.
 
 ## Overview
-Jupita Agent is an API product that provides deep learning powered analysis of conversational data, via many mediums, between an agent and client. Within the SDK documentation, `message_type` will simply refer to who is speaking. `message_type` 0 = `agent`, and `message_type` 1 = `client`, although these labels are handled by the SDK.
+Jupita Agent is an API product that provides deep learning powered communications analytics. Within the SDK documentation, `messageType` will simply refer to who is speaking. `messageType` 0 = `agent`, and `messageType` 1 = `client`, although these labels are handled by the SDK.
 
-The required parameters for the APIs include setting `message_type`, along with assigning an `agent_id` + `client_id` to be passed - how this is structured or deployed is dependent on your systems/platforms architecture, therefore it is completely flexible and customizable. Please note when assigning the `agent_id` that no data will be available for that particular agent from any of the APIs until the agent has sent at least 1 utterance via the `dump` API. 
+The required parameters for the APIs include setting `messageType`, along with assigning an `agentId` + `clientId` to be passed - how this is structured or deployed is completely flexible and customizable. Please note when assigning the `agentId` that no data will be available for that particular agent until the agent has sent at least 1 utterance via the `dump` API. 
 
 ## APIs
-There are 1 API within the Jupita Agent product – `dump`:
+There is one API within the Jupita Agent product – `dump`:
 
-- `Dump` allows you to dump each communication utterance (required)
+- `Dump` allows you to dump each communication utterance.
 
 ## Quickstart
 ### Step 1
@@ -28,7 +28,7 @@ allprojects {
 ```
 
 ### Step 2
-Add the dependency in app’s build.gradle file;
+Add the dependency in the applications build.gradle file;
 
 ```
 dependencies {
