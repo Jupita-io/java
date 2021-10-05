@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		String token = "Your_token";
+		String token = "Access-token";
 		Agent agent = new Agent.Builder(this)
 								.setToken(token)
 								.setAgent_id("2")
@@ -27,31 +27,6 @@ public class MainActivity extends AppCompatActivity {
 				public void onSuccess(String msg, double utterance) {
 					Log.d("JUPITA", msg);
 					Log.d("JUPITA", String.valueOf(utterance));
-				}
-
-				@Override
-				public void onError(String statusCode, JSONObject response) {
-					Log.d("JUPITA", response.toString());
-				}
-			});
-
-			agent.rating(new Agent.RatingListener() {
-				@Override
-				public void onSuccess(double rating) {
-					Log.d("JUPITA", String.valueOf(rating));
-				}
-
-				@Override
-				public void onError(String statusCode, JSONObject response) {
-
-					Log.d("JUPITA", response.toString());
-				}
-			});
-
-			agent.feed(new Agent.FeedListener() {
-				@Override
-				public void onSuccess(JSONObject week) {
-					Log.d("JUPITA", week.toString());
 				}
 
 				@Override

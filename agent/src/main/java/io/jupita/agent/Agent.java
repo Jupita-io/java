@@ -92,97 +92,6 @@ public class Agent {
 		requestQueue.add(request);
 	}
 
-	private void ratingRequestAPI(@NonNull String modelName, RatingListener ratingListener)
-			throws JSONException, IllegalArgumentException {
-		if(!modelName.equals(JUPITAV1)){
-			throw new IllegalArgumentException("Only Jupita v1 is supported");
-		}
-
-		final JSONObject jsonData = new JSONObject("{" +
-				"\"token\":\"" + this.token + "\"," +
-				"\"agent_id\":\"" + this.agent_id + "\"," +
-				"\"model\":\"" + modelName + "\"}");
-
-		JsonObjectRequest request = new JsonObjectRequest(Constants.ratingEndpoint, jsonData,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject response) {
-						double rating = 0.0;
-						try {
-							rating = response.getDouble("rating");
-						} catch (JSONException e) {
-							Log.e(Constants.name, e.getMessage());
-							e.printStackTrace();
-						}
-						if(ratingListener != null){
-							ratingListener.onSuccess(rating);
-						}
-					}
-				},
-				new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						String body = "";
-						JSONObject jsonResponse = null;
-						String statusCode = String.valueOf(error.networkResponse.statusCode);
-						if(error.networkResponse.data!=null) {
-							try {
-								body = new String(error.networkResponse.data,"UTF-8");
-								jsonResponse = new JSONObject(body);
-							} catch (UnsupportedEncodingException | JSONException e) {
-								Log.e(Constants.name, e.getMessage());
-								e.printStackTrace();
-							}
-						}
-						if(ratingListener != null){
-							ratingListener.onError(statusCode, jsonResponse);
-						}
-					}
-				}
-		);
-		requestQueue.add(request);
-	}
-
-	private void feedRequestAPI(FeedListener feedListener)
-			throws JSONException, IllegalArgumentException {
-
-		final JSONObject jsonData = new JSONObject("{" +
-				"\"token\":\"" + this.token + "\"," +
-				"\"agent_id\":\"" + this.agent_id + "\"}");
-
-		JsonObjectRequest request = new JsonObjectRequest(Constants.feedEndpoint, jsonData,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject response) {
-						if(feedListener != null){
-							feedListener.onSuccess(response);
-						}
-					}
-				},
-				new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						String body = "";
-						JSONObject jsonResponse = null;
-						String statusCode = String.valueOf(error.networkResponse.statusCode);
-						if(error.networkResponse.data!=null) {
-							try {
-								body = new String(error.networkResponse.data,"UTF-8");
-								jsonResponse = new JSONObject(body);
-							} catch (UnsupportedEncodingException | JSONException e) {
-								Log.e(Constants.name, e.getMessage());
-								e.printStackTrace();
-							}
-						}
-						if(feedListener != null){
-							feedListener.onError(statusCode, jsonResponse);
-						}
-					}
-				}
-		);
-		requestQueue.add(request);
-	}
-
 	public void dump(@NonNull String text, @NonNull String client_id)
 			throws JSONException, IllegalArgumentException {
 		dumpRequestAPI(text, client_id, AGENT, false, null);
@@ -205,33 +114,8 @@ public class Agent {
 		dumpRequestAPI(text, client_id, type, isCall, dumpListener);
 	}
 
-	public void rating(RatingListener ratingListener)
-			throws JSONException, IllegalArgumentException {
-		ratingRequestAPI(JUPITAV1, ratingListener);
-	}
-
-	public void rating(@NonNull String modelName, RatingListener ratingListener)
-			throws JSONException, IllegalArgumentException {
-		ratingRequestAPI(modelName, ratingListener);
-	}
-
-	public void feed(FeedListener feedListener)
-			throws JSONException, IllegalArgumentException {
-		feedRequestAPI(feedListener);
-	}
-
 	public interface DumpListener {
 		public void onSuccess(String msg, double utterance);
-		public void onError(String statusCode, JSONObject response);
-	}
-
-	public interface RatingListener {
-		public void onSuccess(double rating);
-		public void onError(String statusCode, JSONObject response);
-	}
-
-	public interface FeedListener {
-		public void onSuccess(JSONObject week);
 		public void onError(String statusCode, JSONObject response);
 	}
 
