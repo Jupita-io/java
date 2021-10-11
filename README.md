@@ -1,16 +1,16 @@
-[![](https://jitpack.io/v/Jupita-io/Jupita-Agent-Android.svg)](https://jitpack.io/#Jupita-io/Jupita-Agent-Android)
+[![](https://jitpack.io/v/Jupita-io/Jupita-Java.svg)](https://jitpack.io/#Jupita-io/Jupita-Java)
 
-# Jupita Agent Java SDK
+# Jupita Java SDK
 
-This SDK is developed for Android using Java and utilizes Google’s Volley library to create the API calls required. This library will allow you to make the required `dump` API calls with Jupita Agent. All API calls are made asynchronously, thus there are event listeners available to handle the API results.
+This SDK is developed for Android using Java and utilizes Google’s Volley library to create the API calls required. This library will allow you to make the required `dump` API calls with Jupita. All API calls are made asynchronously, thus there are event listeners available to handle the API results.
 
 ## Overview
-Jupita Agent is an API product that provides deep learning powered communications analytics. Within the SDK documentation, `message_type` will simply refer to who is speaking. `message_type` 0 = `agent`, and `message_type` 1 = `client`, although these labels are handled by the SDK.
+Jupita is an API product that provides deep learning powered communications analytics. Within the SDK documentation, `message_type` will simply refer to who is speaking. `message_type` 0 = `touchpoint`, and `message_type` 1 = `input`, although these labels are handled by the SDK.
 
-The required parameters for the APIs include setting `message_type`, along with assigning an `agent_id` + `client_id` to be passed - how this is structured or deployed is completely flexible and customizable. Please note when assigning the `agent_id` that no data will be available for that particular agent until the agent has sent at least 1 utterance via the `dump` API. 
+The required parameters for the APIs include setting `message_type`, along with assigning an `touchpoint_id` + `input_id` to be passed - how this is structured or deployed is completely flexible and customizable. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
 
 ## APIs
-There is one API within the Jupita Agent product – `dump`:
+There is one API within the Jupita product – `dump`:
 
 - `Dump` allows you to dump each communication utterance.
 
@@ -32,31 +32,29 @@ Add the dependency in the applications build.gradle file;
 
 ```
 dependencies {
-                implementation 'com.github.Jupita-io:Jupita-Agent-Android:1.1.0'
+                implementation 'com.github.Jupita-io:Jupita-Java:1.1.0'
 	    }
 ```
 
 ### Step 3
-Build Jupita Agent - '2' has been used to represent the agent_id;
+Build Jupita - '2' has been used to represent the touchpoint_id;
 
 ```
 String token = “your-token”;
-Agent agent = new Agent.Builder(getApplicationContext())
+Touchpoint touchpoint = new Touchpoint.Builder(getApplicationContext())
                                     .setToken(token)
-                                    .setAgent_id("2")
+                                    .setTouchpoint_id("2")
                                     .build();
 ```
 
 ### Step 4
-Call the dump API as a message from Agent by specifying the message and client_id – represented as '3' below;
+Call the dump API as a message from Touchpoint by specifying the message and input_id – represented as '3' below;
 
 ```
-agent.dump("hi", "3",  Agent.AGENT, new Agent.DumpListener() {
+touchpoint.dump("hi", "3",  Touchpoint.TOUCHPOINT, new Touchpoint.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
-
-                        // Do something
 
                         Log.d("TEST", String.valueOf(utterance));
 
@@ -67,8 +65,6 @@ agent.dump("hi", "3",  Agent.AGENT, new Agent.DumpListener() {
             @Override
 
             public void onError(String statusCode, JSONObject response) {
-
-                        // Check the error
 
                         Log.d("TEST", response.toString());
 
@@ -78,15 +74,13 @@ agent.dump("hi", "3",  Agent.AGENT, new Agent.DumpListener() {
 ```
 
 
-Similarly, call the dump API whenever client responds back to the same agent by specifying the message and ID of the client;
+Similarly, call the dump API whenever input responds back to the same touchpoint by specifying the message and ID of the input;
 
 ```
-agent.dump("hi, how are you?", "3",  Agent.CLIENT, new Agent.DumpListener() {
+touchpoint.dump("hi, how are you?", "3",  Touchpoint.INPUT, new Touchpoint.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
-
-                        // Do something
 
                         Log.d("TEST", String.valueOf(utterance));
 
@@ -97,8 +91,6 @@ agent.dump("hi, how are you?", "3",  Agent.CLIENT, new Agent.DumpListener() {
             @Override
 
             public void onError(String statusCode, JSONObject response) {
-
-                        // Check the error
 
                         Log.d("TEST", response.toString());
 
@@ -109,42 +101,42 @@ agent.dump("hi, how are you?", "3",  Agent.CLIENT, new Agent.DumpListener() {
 
 ## Error handling
 The SDK throws 2 errors:
-- JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Agent methods.
+- JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Touchpoint methods.
 - IllegalArgumentException: this arises if the `message_type` set in the dump method is not 1 or 0, or the model name in rating method is not ‘JupitaV1’.
 
 ## Error codes
 Error codes thrown are 401 when the token is incorrect and 400 when there is an attempt to dump gibberish content to the server, although the model does have an inbuilt gibberish detector.
 
 ## Libraries
-Use Step 1 and 2 so that the Jupita Agent Android SDK is available within the scope of the project.
-Currently the Jupita Agent Android SDK is dependent on volley 1.2.0 and takes the permission of the internet as soon as the SDK is added as a dependency.
+Use Step 1 and 2 so that the Jupita Android SDK is available within the scope of the project.
+Currently the Jupita Android SDK is dependent on volley 1.2.0 and takes the permission of the internet as soon as the SDK is added as a dependency.
 
 ## Classes
-The available product under the Android SDK is Jupita Agent.
+The available product under the Android SDK is Jupita.
 
-Jupita Agent can be constructed directly using the public constructor but it is highly recommended to use the Agent.Builder class to build the product. This will ensure that mistakes are not made while building Jupita Agent.
+Jupita can be constructed directly using the public constructor but it is highly recommended to use the Touchpoint.Builder class to build the product. This will ensure that mistakes are not made while building Jupita.
 
 ```
 String token = “your-token”;
-Agent agent = new Agent.Builder(getApplicationContext())
+Touchpoint touchpoint = new Touchpoint.Builder(getApplicationContext())
                                     .setToken(token)
-                                    .setAgent_id("2")
+                                    .setTouchpoint_id("2")
                                     .build();
 ```
 
-The builder constructs with the context of the application. This is needed for building the volley request queue. Next the token and agent_id needs to be set.
+The builder constructs with the context of the application. This is needed for building the volley request queue. Next the token and touchpoint_id needs to be set.
 
-The built agent can now be used to call dump method asynchronously.
+The built touchpoint can now be used to call dump method asynchronously.
 
 ### `dump` method definitions
 
 ```
-public void dump(@NonNull String text, @NonNull String client_id, int type, boolean isCall, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String client_id, int type, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String client_id, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String client_id)
+public void dump(@NonNull String text, @NonNull String input_id, int type, boolean isCall, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, int type, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id)
 ```
 
-If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `client_id` are essential when creating a `dump` request. To avoid illegal argument error use `Agent.AGENT` or `Agent.CLIENT` for type.
+If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Touchpoint.TOUCHPOINT` or `Touchpoint.INPUT` for type.
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
