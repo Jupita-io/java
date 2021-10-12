@@ -41,17 +41,17 @@ Build Jupita - '2' has been used to represent the touchpoint_id;
 
 ```
 String token = “your-token”;
-Touchpoint touchpoint = new Touchpoint.Builder(getApplicationContext())
+Jupita touchpoint = new Jupita.Builder(getApplicationContext())
                                     .setToken(token)
                                     .setTouchpoint_id("2")
                                     .build();
 ```
 
 ### Step 4
-Call the dump API as a message from Touchpoint by specifying the message and input_id – represented as '3' below;
+Call the dump API as a message from touchpoint by specifying the message and input_id – represented as '3' below;
 
 ```
-touchpoint.dump("hi", "3",  Touchpoint.TOUCHPOINT, new Touchpoint.DumpListener() {
+jupita.dump("hi", "3",  Jupita.TOUCHPOINT, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -77,7 +77,7 @@ touchpoint.dump("hi", "3",  Touchpoint.TOUCHPOINT, new Touchpoint.DumpListener()
 Similarly, call the dump API whenever input responds back to the same touchpoint by specifying the message and ID of the input;
 
 ```
-touchpoint.dump("hi, how are you?", "3",  Touchpoint.INPUT, new Touchpoint.DumpListener() {
+jupita.dump("hi, how are you?", "3",  Jupita.INPUT, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -101,8 +101,8 @@ touchpoint.dump("hi, how are you?", "3",  Touchpoint.INPUT, new Touchpoint.DumpL
 
 ## Error handling
 The SDK throws 2 errors:
-- JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Touchpoint methods.
-- IllegalArgumentException: this arises if the `message_type` set in the dump method is not 1 or 0, or the model name in rating method is not ‘JupitaV1’.
+- JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Jupita methods.
+- IllegalArgumentException: this arises if the `message_type` set in the dump method is not 1 or 0.
 
 ## Error codes
 Error codes thrown are 401 when the token is incorrect and 400 when there is an attempt to dump gibberish content to the server, although the model does have an inbuilt gibberish detector.
@@ -114,11 +114,11 @@ Currently the Jupita Android SDK is dependent on volley 1.2.0 and takes the perm
 ## Classes
 The available product under the Android SDK is Jupita.
 
-Jupita can be constructed directly using the public constructor but it is highly recommended to use the Touchpoint.Builder class to build the product. This will ensure that mistakes are not made while building Jupita.
+Jupita can be constructed directly using the public constructor but it is highly recommended to use the Jupita.Builder class to build the product. This will ensure that mistakes are not made while building Jupita.
 
 ```
 String token = “your-token”;
-Touchpoint touchpoint = new Touchpoint.Builder(getApplicationContext())
+Jupita touchpoint = new Jupita.Builder(getApplicationContext())
                                     .setToken(token)
                                     .setTouchpoint_id("2")
                                     .build();
@@ -137,6 +137,6 @@ public void dump(@NonNull String text, @NonNull String input_id, DumpListener du
 public void dump(@NonNull String text, @NonNull String input_id)
 ```
 
-If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Touchpoint.TOUCHPOINT` or `Touchpoint.INPUT` for type.
+If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for type.
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
