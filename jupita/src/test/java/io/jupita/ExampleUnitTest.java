@@ -1,4 +1,4 @@
-package io.jupita.agent;
+package io.jupita;
 
 import org.junit.Test;
 

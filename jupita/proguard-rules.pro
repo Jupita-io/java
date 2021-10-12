@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keepclassmembers class io.jupita.agent.Agent {*;}
+-keepclassmembers class io.jupita.Jupita {*;}

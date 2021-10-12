@@ -1,4 +1,4 @@
-package io.jupita.agent;
+package io.jupita;
 
 public class Constants {
 	public static final String name = "JUPITA";
