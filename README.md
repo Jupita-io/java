@@ -51,7 +51,7 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
 Call the dump API as a message from touchpoint by specifying the message and input_id – represented as '3' below;
 
 ```
-jupita.dump("hi", "3",  Jupita.TOUCHPOINT, new Jupita.DumpListener() {
+touchpoint.dump("hi", "3",  Jupita.TOUCHPOINT, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -77,7 +77,7 @@ jupita.dump("hi", "3",  Jupita.TOUCHPOINT, new Jupita.DumpListener() {
 Similarly, call the dump API whenever input responds back to the same touchpoint by specifying the message and ID of the input;
 
 ```
-jupita.dump("hi, how are you?", "3",  Jupita.INPUT, new Jupita.DumpListener() {
+touchpoint.dump("hi, how are you?", "3",  Jupita.INPUT, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
