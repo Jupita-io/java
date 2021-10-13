@@ -65,7 +65,7 @@ public class Jupita {
                 },
                 error -> {
                     String body = "";
-                    JSONObject jsonResponse = null;
+                    JSONObject jsonResponse = new JSONObject();
                     String statusCode = String.valueOf(error.networkResponse.statusCode);
                     if (error.networkResponse.data != null) {
                         try {
