@@ -32,7 +32,7 @@ Add the dependency in the applications build.gradle file;
 
 ```
 dependencies {
-                implementation 'com.github.Jupita-io:Jupita-Java:1.1.0'
+                implementation 'com.github.Jupita-io:java:1.1.0'
 	    }
 ```
 
