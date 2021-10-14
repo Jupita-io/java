@@ -109,7 +109,7 @@ Error codes thrown are 401 when the token is incorrect.
 
 ## Libraries
 Use Step 1 and 2 so that the Jupita Java SDK is available within the scope of the project.
-Currently the Jupita Java SDK is dependent on volley 1.2.0 and takes the permission of the web as soon as the SDK is added as a dependency.
+Currently the Jupita Java SDK is dependent on volley 1.2.1 and takes the permission of the web as soon as the SDK is added as a dependency.
 
 ## Classes
 The available product under the Java SDK is Jupita.
