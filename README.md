@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/Jupita-io/Jupita-Java.svg)](https://jitpack.io/#Jupita-io/Jupita-Java)
+[![](https://jitpack.io/v/#Jupita-io/java.svg)](https://jitpack.io/#Jupita-io/java)
 
 # Jupita Java SDK
 
