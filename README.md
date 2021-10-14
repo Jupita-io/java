@@ -136,6 +136,7 @@ public void dump(@NonNull String text, @NonNull String input_id, int type, DumpL
 public void dump(@NonNull String text, @NonNull String input_id, DumpListener dumpListener)
 public void dump(@NonNull String text, @NonNull String input_id)
 ```
+The parameter `isCall` is required and set to false within the SDK. This tells Jupita whether or not the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true`.
 
 If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for type.
 
