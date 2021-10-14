@@ -108,11 +108,11 @@ The SDK throws 2 errors:
 Error codes thrown are 401 when the token is incorrect.
 
 ## Libraries
-Use Step 1 and 2 so that the Jupita Android SDK is available within the scope of the project.
-Currently the Jupita Android SDK is dependent on volley 1.2.0 and takes the permission of the web as soon as the SDK is added as a dependency.
+Use Step 1 and 2 so that the Jupita Java SDK is available within the scope of the project.
+Currently the Jupita Java SDK is dependent on volley 1.2.0 and takes the permission of the web as soon as the SDK is added as a dependency.
 
 ## Classes
-The available product under the Android SDK is Jupita.
+The available product under the Java SDK is Jupita.
 
 Jupita can be constructed directly using the public constructor but it is highly recommended to use the Jupita.Builder class to build the product. This will ensure that mistakes are not made while building Jupita.
 
