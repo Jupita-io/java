@@ -5,7 +5,7 @@ This SDK is developed for Android using Java and utilizes Google’s Volley libr
 
 
 ## Overview
-Jupita is an API product that provides deep learning powered touchpoint analytics. Within the SDK documentation, `message_type` will simply refer to who is speaking. `message_type` 0 = `touchpoint`, and `message_type` 1 = `input`, although these labels are handled by the SDK.
+Jupita is an API product that provides deep learning powered touchpoint analytics. Within the SDK documentation, `message_type` will simply refer to who is speaking. `message_type` 0 = `TOUCHPOINT`, and `message_type` 1 = `INPUT`, although these labels are handled by the SDK.
 
 The required parameters for the APIs include setting `message_type`, along with assigning an `touchpoint_id` + `input_id` to be passed - how this is structured or deployed is completely flexible and customizable. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
 
@@ -133,13 +133,13 @@ The builder constructs with the context of the application, token, and the touch
 ### `dump` method definitions
 
 ```
-public void dump(@NonNull String text, @NonNull String input_id, int type, boolean isCall, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String input_id, int type, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, int message_type, boolean isCall, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, int message_type, DumpListener dumpListener)
 public void dump(@NonNull String text, @NonNull String input_id, DumpListener dumpListener)
 public void dump(@NonNull String text, @NonNull String input_id)
 ```
 
-If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for type.
+If the values of `message_type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for `message_type`.
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
 

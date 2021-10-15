@@ -35,16 +35,16 @@ public class Jupita {
     }
 
     private void dumpRequestAPI(@NonNull String text, @NonNull String input_id,
-                                int type, boolean isCall,
+                                int message_type, boolean isCall,
                                 DumpListener dumpListener) throws JSONException, IllegalArgumentException {
-        if (type != TOUCHPOINT && type != INPUT) {
-            throw new IllegalArgumentException("Use either Touchpoint or Input type");
+        if (message_type != TOUCHPOINT && message_type != INPUT) {
+            throw new IllegalArgumentException("Use either `Jupita.TOUCHPOINT` or `Jupita.INPUT` type");
         }
         final JSONObject jsonData = new JSONObject("{" +
                 "\"token\":\"" + this.token + "\"," +
                 "\"input_id\":\"" + input_id + "\"," +
                 "\"touchpoint_id\":\"" + this.touchpoint_id + "\"," +
-                "\"message_type\":" + type + "," +
+                "\"message_type\":" + message_type + "," +
                 "\"text\":\"" + text + "\"," +
                 "\"isCall\":" + isCall + "}");
 
@@ -95,15 +95,15 @@ public class Jupita {
     }
 
     public void dump(@NonNull String text, @NonNull String input_id,
-                     int type, DumpListener dumpListener)
+                     int message_type, DumpListener dumpListener)
             throws JSONException, IllegalArgumentException {
-        dumpRequestAPI(text, input_id, type, false, dumpListener);
+        dumpRequestAPI(text, input_id, message_type, false, dumpListener);
     }
 
-    public void dump(@NonNull String text, @NonNull String input_id, int type,
+    public void dump(@NonNull String text, @NonNull String input_id, int message_type,
                      boolean isCall, DumpListener dumpListener)
             throws JSONException, IllegalArgumentException {
-        dumpRequestAPI(text, input_id, type, isCall, dumpListener);
+        dumpRequestAPI(text, input_id, message_type, isCall, dumpListener);
     }
 
     public interface DumpListener {
