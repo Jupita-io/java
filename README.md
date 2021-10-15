@@ -13,7 +13,7 @@ The required parameters for the APIs include setting `message_type`, along with 
 ## APIs
 There is one API within the Jupita product – `dump`:
 
-- `Dump` allows you to dump each communication utterance.
+- `dump` allows you to dump each communication utterance.
 
 
 ## Quickstart
@@ -52,7 +52,7 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
 ### Step 4
 Dump an utterance from a touchpoint by calling the dump API as a message by specifying the message text and the ID of the input, represented in the example below as '3'. 
 
-The parameter `isCall` is required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to false;
+The parameter `isCall` is required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to `false`;
 
 ```
 touchpoint.dump("Hi, how are you?", "3", Jupita.TOUCHPOINT, false, new Jupita.DumpListener() {
@@ -106,7 +106,7 @@ touchpoint.dump("Hi, good thanks", "3", Jupita.INPUT, false, new Jupita.DumpList
 ## Error handling
 The SDK throws 2 errors:
 - JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Jupita methods.
-- IllegalArgumentException: this arises if the `message_type` set in the dump method is not 1 or 0.
+- IllegalArgumentException which occurs if the `message_type` set in the dump method is not 1 or 0.
 
 
 ## Error codes
