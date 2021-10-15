@@ -48,7 +48,7 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
 ```
 
 ### Step 4
-Dump the utterance from a touchpoint by calling the dump API as a message by specifying the message text and the ID of the input, represented in the example below as '3'. The parameter `isCall` is required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to false;
+Dump an utterance from a touchpoint by calling the dump API as a message by specifying the message text and the ID of the input, represented in the example below as '3'. The parameter `isCall` is required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to false;
 
 ```
 touchpoint.dump("Hi, how are you?", "3", Jupita.TOUCHPOINT, false, new Jupita.DumpListener() {
