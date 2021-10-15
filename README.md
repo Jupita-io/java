@@ -32,12 +32,12 @@ Add the dependency in the applications build.gradle file;
 
 ```
 dependencies {
-                implementation 'com.github.Jupita-io:java:1.1.0'
-	    }
+                implementation 'com.github.Jupita-io:java:1.1.1'
+        }
 ```
 
 ### Step 3
-Build Jupita - '2' has been used to represent the touchpoint_id;
+Build Jupita. Insert your touchpoint user ID. In the example below '2' represents the touchpoint_id;
 
 ```
 String token = “your-token”;
@@ -48,10 +48,10 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
 ```
 
 ### Step 4
-Call the dump API as a message from touchpoint by specifying the message and input_id – represented as '3' below;
+Dump the utterance from the touchpoint by calling the dump API as a message by specifying the message text and the ID of the input, represented in the example below as '3'. The parameter `isCall` is required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to false;
 
 ```
-touchpoint.dump("Hello", "3", Jupita.TOUCHPOINT, false, new Jupita.DumpListener() {
+touchpoint.dump("Hi, how are you?", "3", Jupita.TOUCHPOINT, false, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -74,10 +74,10 @@ touchpoint.dump("Hello", "3", Jupita.TOUCHPOINT, false, new Jupita.DumpListener(
 ```
 
 
-Similarly, call the dump API whenever input responds back to the same touchpoint by specifying the message and ID of the input;
+Similarly, call the dump API whenever dumping an utterance from an input by specifying the message text and ID of the input;
 
 ```
-touchpoint.dump("Hi, how are you?", "3", Jupita.INPUT, false, new Jupita.DumpListener() {
+touchpoint.dump("Hi, good thanks", "3", Jupita.INPUT, false, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -108,13 +108,10 @@ The SDK throws 2 errors:
 Error codes thrown are 401 when the token is incorrect.
 
 ## Libraries
-Use Step 1 and 2 so that the Jupita Java SDK is available within the scope of the project.
-Currently the Jupita Java SDK is dependent on volley 1.2.1 and takes the permission of the web as soon as the SDK is added as a dependency.
+Use Step 1 and 2 so that the Jupita Java SDK is available within the scope of the project. Currently the Jupita Java SDK is dependent on volley 1.2.1 and takes the permission of the web as soon as the SDK is added as a dependency.
 
 ## Classes
-The available product under the Java SDK is Jupita.
-
-Jupita can be constructed directly using the public constructor but it is highly recommended to use the Jupita.Builder class to build the product. This will ensure that mistakes are not made while building Jupita.
+The available product under the Java SDK is Jupita. Jupita can be constructed directly using the public constructor but it is highly recommended to use the Jupita.Builder class to build the product. This will ensure that mistakes are not made while building Jupita.
 
 ```
 String token = “your-token”;
@@ -124,9 +121,7 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
                                     .build();
 ```
 
-The builder constructs with the context of the application. This is needed for building the volley request queue. Next the token and touchpoint_id needs to be set.
-
-The built touchpoint can now be used to call dump method asynchronously.
+The builder constructs with the context of the application, token, and the touchpoint_id. This is needed for building the volley request queue. The built touchpoint can now be used to call dump method asynchronously.
 
 ### `dump` method definitions
 
@@ -136,10 +131,9 @@ public void dump(@NonNull String text, @NonNull String input_id, int type, DumpL
 public void dump(@NonNull String text, @NonNull String input_id, DumpListener dumpListener)
 public void dump(@NonNull String text, @NonNull String input_id)
 ```
-The parameter `isCall` is required and set to false within the SDK. This tells Jupita whether or not the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true`.
 
 If the values of `type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for type.
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
 
-If you require additional support just hit us up at support@jupita.io 
+If you require additional support please contact support@jupita.io 
