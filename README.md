@@ -105,7 +105,7 @@ The SDK throws 2 errors:
 - IllegalArgumentException: this arises if the `message_type` set in the dump method is not 1 or 0.
 
 ## Error codes
-Error codes thrown are 401 when the token is incorrect.
+Error codes thrown are 401 when the token is incorrect, otherwise Jupita returns error 400 with details. 
 
 ## Libraries
 Use Step 1 and 2 so that the Jupita Java SDK is available within the scope of the project. Currently the Jupita Java SDK is dependent on volley 1.2.1 and takes the permission of the web as soon as the SDK is added as a dependency.
