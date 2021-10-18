@@ -104,13 +104,9 @@ touchpoint.dump("Hi, good thanks", "3", Jupita.INPUT, false, new Jupita.DumpList
 ```
 
 ## Error handling
-The SDK throws 2 errors:
 - JSONException which occurs if the user input is not json compatible. This can be incorrect usage of strings when passed on to the Jupita methods.
 - IllegalArgumentException which occurs if the `message_type` set in the dump method is not 1 or 0.
-
-
-## Error codes
-Error codes thrown are 401 when the token is incorrect, otherwise Jupita returns error 400 with details. 
+- Error codes thrown are 401 when the token is incorrect, otherwise Jupita returns error 400 with details.
 
 
 ## Libraries
