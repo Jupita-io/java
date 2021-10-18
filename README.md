@@ -125,7 +125,7 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
 
 The builder constructs with the context of the application, token, and the touchpoint_id. This is needed for building the volley request queue. The built touchpoint can now be used to call dump method asynchronously.
 
-### `dump` method definitions
+## `dump` method definitions
 
 ```
 public void dump(@NonNull String text, @NonNull String input_id, int message_type, boolean isCall, DumpListener dumpListener)
@@ -138,4 +138,5 @@ If the values of `message_type` and `isCall` are not provided by default the val
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
 
-If you require additional support please contact support@jupita.io 
+## Support
+If you require additional support please contact support@jupita.io
