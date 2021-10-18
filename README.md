@@ -106,7 +106,7 @@ touchpoint.dump("Hi, good thanks", "3", Jupita.INPUT, false, new Jupita.DumpList
 ## Error handling
 - `JSONException` which occurs if the user input is not JSON compatible. This can be incorrect usage of strings when passed on to the Jupita methods.
 - `IllegalArgumentException` which occurs if the `message_type` set in the dump method is not 1 or 0.
-- Error codes thrown are 401 when the token is incorrect, otherwise Jupita returns error 400 with details.
+- A 401 error code is thrown when the token is incorrect, otherwise Jupita returns error 400 with details.
 
 ## Libraries
 Use Step 1 and 2 so that the Jupita Java SDK is available within the scope of the project. Currently the Jupita Java SDK is dependent on volley 1.2.1 and takes the permission of the web as soon as the SDK is added as a dependency.
