@@ -134,7 +134,7 @@ public void dump(@NonNull String text, @NonNull String input_id, DumpListener du
 public void dump(@NonNull String text, @NonNull String input_id)
 ```
 
-If the values of `message_type` and `isCall` are not provided by default the values are considered 0 and false. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for `message_type`.
+If the values of `message_type` and `isCall` are not provided the values are considered as `Jupita.TOUCHPOINT` and `false` by default. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for `message_type`.
 
 `DumpListener` is an interface which needs to be implemented to listen to results of the dump call. The onSuccess event returns the success message as well as the utterance rating as double.
 
