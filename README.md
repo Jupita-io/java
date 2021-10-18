@@ -5,9 +5,9 @@ This SDK is developed for Android using Java and utilizes Google’s Volley libr
 
 
 ## Overview
-Jupita is an API product that provides deep learning powered touchpoint analytics. Within the SDK documentation, `message_type` will simply refer to who is speaking. `message_type` 0 = `TOUCHPOINT`, and `message_type` 1 = `INPUT`, although these labels are handled by the SDK.
+Jupita is an API product that provides deep learning powered touchpoint analytics. Within the SDK documentation `message_type` will simply refer to who is speaking. `message_type` 0 = `TOUCHPOINT` and `message_type` 1 = `INPUT` although these labels are handled by the SDK.
 
-The required parameters for the APIs include setting `message_type`, along with assigning an `touchpoint_id` + `input_id` to be passed - how this is structured or deployed is completely flexible and customizable. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
+The required parameters for the APIs include setting `message_type` along with assigning a `touchpoint_id` + `input_id` to be passed, how this is structured or deployed is completely flexible and customizable. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
 
 
 ## APIs
