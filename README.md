@@ -7,9 +7,9 @@ This SDK is developed for Android using Java and utilizes Google’s Volley libr
 ## Overview
 Jupita is an API product that provides deep learning powered touchpoint analytics. Within the SDK documentation `message_type` refers to which user the utterance is from. `message_type` 0 = `TOUCHPOINT` and `message_type` 1 = `INPUT`, although these labels are handled by the SDK.
 
-The required parameters for the APIs include setting `message_type` along with assigning a `touchpoint_id` + `input_id` to be passed, how this is structured or deployed is completely flexible and customizable. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
+The required parameters for the APIs include setting `message_type` along with assigning a `touchpoint_id` + `input_id` to be passed. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
 
-When sending an initial touchpoint utterance with no known input_id, for example when creating a Twitter post, simply pass a nominal input_id, such as '0' for instance.
+You can set any touchpoint or input ID format within the confines of JSON. How this is structured or deployed is completely customisable, for example, you may wish to use full names for your users from your database, or you may wish to apply sequencing numbers for input users where the user is not known. When sending an initial touchpoint utterance with no known input_id, for example when creating a Twitter post, simply pass a nominal input_id, such as '0'.
 
 ## APIs
 There is one API within the Jupita product – `dump`:
