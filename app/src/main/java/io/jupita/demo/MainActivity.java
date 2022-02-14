@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         try {
             Log.d("JUPITA", "Starting different API calls");
-            touchpoint.dump("Hi", "2", Jupita.TOUCHPOINT, new Jupita.DumpListener() {
+            touchpoint.dump("Hi", "2", "Web chat", Jupita.TOUCHPOINT, new Jupita.DumpListener() {
                 @Override
                 public void onSuccess(String msg, double utterance) {
                     Log.d("JUPITA", msg);
