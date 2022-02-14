@@ -9,7 +9,7 @@ Jupita is an API product that provides omnichannel communications analytics. Wit
 
 Within the dashboard UI touchpoints are referred to as 'channels', and inputs are referred to as 'customers'.
 
-The required parameters for the APIs include setting `message_type` along with assigning a `touchpoint_id` + `input_id` to be passed. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
+The required parameters for the API include setting `channel_type`, `message_type`, along with assigning a `touchpoint_id` + `input_id` to be passed. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
 
 You can set any `TOUCHPOINT` or `INPUT` ID format within the confines of JSON. How this is structured or deployed is completely customisable, for example, you may wish to use full names for users from your database, or you may wish to apply sequencing numbers for `INPUT` users where the user is not known. 
 
