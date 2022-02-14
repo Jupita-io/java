@@ -34,7 +34,7 @@ public class Jupita {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    private void dumpRequestAPI(@NonNull String text, @NonNull String input_id,
+    private void dumpRequestAPI(@NonNull String text, @NonNull String input_id, @NonNull String channel_type,
                                 int message_type, boolean isCall,
                                 DumpListener dumpListener) throws JSONException, IllegalArgumentException {
         if (message_type != TOUCHPOINT && message_type != INPUT) {
@@ -43,6 +43,7 @@ public class Jupita {
         final JSONObject jsonData = new JSONObject("{" +
                 "\"token\":\"" + this.token + "\"," +
                 "\"input_id\":\"" + input_id + "\"," +
+                "\"channel_type\":\"" + channel_type + "\"," +
                 "\"touchpoint_id\":\"" + this.touchpoint_id + "\"," +
                 "\"message_type\":" + message_type + "," +
                 "\"text\":\"" + text + "\"," +
@@ -84,26 +85,26 @@ public class Jupita {
         requestQueue.add(request);
     }
 
-    public void dump(@NonNull String text, @NonNull String input_id)
+    public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type)
             throws JSONException, IllegalArgumentException {
-        dumpRequestAPI(text, input_id, TOUCHPOINT, false, null);
+        dumpRequestAPI(text, input_id, channel_type, TOUCHPOINT, false, null);
     }
 
-    public void dump(@NonNull String text, @NonNull String input_id, DumpListener dumpListener)
+    public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type, DumpListener dumpListener)
             throws JSONException, IllegalArgumentException {
-        dumpRequestAPI(text, input_id, TOUCHPOINT, false, dumpListener);
+        dumpRequestAPI(text, input_id, channel_type, TOUCHPOINT, false, dumpListener);
     }
 
-    public void dump(@NonNull String text, @NonNull String input_id,
+    public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type, 
                      int message_type, DumpListener dumpListener)
             throws JSONException, IllegalArgumentException {
-        dumpRequestAPI(text, input_id, message_type, false, dumpListener);
+        dumpRequestAPI(text, input_id, channel_type, message_type, false, dumpListener);
     }
 
-    public void dump(@NonNull String text, @NonNull String input_id, int message_type,
+    public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type, int message_type,
                      boolean isCall, DumpListener dumpListener)
             throws JSONException, IllegalArgumentException {
-        dumpRequestAPI(text, input_id, message_type, isCall, dumpListener);
+        dumpRequestAPI(text, input_id, channel_type, message_type, isCall, dumpListener);
     }
 
     public interface DumpListener {
