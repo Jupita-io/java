@@ -55,12 +55,14 @@ Jupita touchpoint = new Jupita.Builder(getApplicationContext())
 ```
 
 ### Step 4
-Dump an utterance from a touchpoint by calling the dump API as a message by specifying the message text and the ID of the input, represented in the example below as '3'. 
+Dump an utterance from a touchpoint by calling the dump API as a message by specifying the message text and the ID of the input, represented in the example below as '3'.
 
-The parameter `isCall` is required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to `false`;
+The parameter `channel_type` is required. This allows you to specify which channel you are deploying the SDK to. You may enter any name you wish in order to identify the channel type in the dashboard UI, e.g "Email", "Web chat", "Social media", "Phone", etc.
+
+The parameter `isCall` is also required and set to false by default. This tells Jupita if the utterance is from an audio call. When dumping an utterance from an audio call, set the `isCall` parameter to `true` otherwise set to `false`;
 
 ```
-touchpoint.dump("Hi, how are you?", "3", Jupita.TOUCHPOINT, false, new Jupita.DumpListener() {
+touchpoint.dump("Hi, how are you?", "3", "Web chat", Jupita.TOUCHPOINT, false, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -86,7 +88,7 @@ touchpoint.dump("Hi, how are you?", "3", Jupita.TOUCHPOINT, false, new Jupita.Du
 Similarly, call the dump API whenever dumping an utterance from an input by specifying the message text and ID of the input;
 
 ```
-touchpoint.dump("Hi, good thanks", "3", Jupita.INPUT, false, new Jupita.DumpListener() {
+touchpoint.dump("Hi, good thanks", "3", "Web chat", Jupita.INPUT, false, new Jupita.DumpListener() {
             @Override
 
             public void onSuccess(String msg, double utterance) {
@@ -133,10 +135,10 @@ The builder constructs with the context of the application, token, and the touch
 ## `dump` method definitions
 
 ```
-public void dump(@NonNull String text, @NonNull String input_id, int message_type, boolean isCall, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String input_id, int message_type, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String input_id, DumpListener dumpListener)
-public void dump(@NonNull String text, @NonNull String input_id)
+public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type, int message_type, boolean isCall, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type, int message_type, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type, DumpListener dumpListener)
+public void dump(@NonNull String text, @NonNull String input_id, @NonNull String channel_type)
 ```
 
 If the values of `message_type` and `isCall` are not provided the values are considered as `Jupita.TOUCHPOINT` and `false` by default. Thus `text` and the `input_id` are essential when creating a `dump` request. To avoid illegal argument error use `Jupita.TOUCHPOINT` or `Jupita.INPUT` for `message_type`.
