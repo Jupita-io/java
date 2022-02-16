@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         String token = "Access-token";
         Jupita touchpoint = new Jupita.Builder(this)
                 .setToken(token)
-                .setTouchpoint_id("3")
+                .setTouchpoint_id("2")
                 .build();
         try {
             Log.d("JUPITA", "Demo API call");
