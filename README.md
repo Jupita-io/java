@@ -44,7 +44,7 @@ dependencies {
 ```
 
 ### Step 3
-Build Jupita. Insert your touchpoint user ID. In the example below '2' represents the touchpoint_id;
+Build Jupita. Insert your token & touchpoint ID. In the example below '2' represents the touchpoint_id;
 
 ```
 String token = “your-token”;
