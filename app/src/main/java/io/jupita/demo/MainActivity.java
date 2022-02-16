@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         String token = "Access-token";
         Jupita touchpoint = new Jupita.Builder(this)
                 .setToken(token)
-                .setTouchpoint_id("2")
+                .setTouchpoint_id("3")
                 .build();
         try {
-            Log.d("JUPITA", "Starting different API calls");
-            touchpoint.dump("Hi", "2", "Web chat", Jupita.TOUCHPOINT, new Jupita.DumpListener() {
+            Log.d("JUPITA", "Demo API call");
+            touchpoint.dump("Hi, how are you?", "3", "Web chat", Jupita.TOUCHPOINT, new Jupita.DumpListener() {
                 @Override
                 public void onSuccess(String msg, double utterance) {
                     Log.d("JUPITA", msg);
