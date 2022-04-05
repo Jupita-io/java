@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/Jupita-io/java.svg)](https://jitpack.io/#Jupita-io/java)
+
 
 # Jupita Java SDK
 This SDK is developed for Android using Java and utilizes Google’s Volley library to create the API calls required. This library will allow you to make the required `dump` API calls with Jupita. All API calls are made asynchronously, thus there are event listeners available to handle the API results.
